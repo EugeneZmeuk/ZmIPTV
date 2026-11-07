@@ -1,0 +1,22 @@
+.gradle/
+build/
+/local.properties
+.idea/
+*.iml
+.DS_Store
+captures/
+.kotlin/
+playlist-sample.txt
+*.m3u8
+/logs/
+/reports/
+*.patch
+
+# Private: provider data, build outputs, signing keys
+TEST-NOTES.md
+*.m3u
+!docs/sample-playlist.m3u
+*.apk
+*.aab
+*.jks
+*.keystore

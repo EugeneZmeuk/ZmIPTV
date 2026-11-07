@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- the splash picture is the window background, so there is no black screen before the first frame -->
+    <style name="Theme.ZmIPTV" parent="@android:style/Theme.DeviceDefault.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_zm</item>
+    </style>
+</resources>

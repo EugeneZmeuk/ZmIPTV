@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 320x180 TV launcher banner: dark tile with a play symbol and "Zm" bars -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="180dp"
+    android:viewportWidth="320"
+    android:viewportHeight="180">
+    <path android:fillColor="#FF14161C" android:pathData="M0,0h320v180h-320z" />
+    <path android:fillColor="#FF2E7DFF" android:pathData="M0,170h320v10h-320z" />
+    <path android:fillColor="#FF2E7DFF" android:pathData="M120,55 L120,125 L180,90 Z" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M196,62h40v8h-28l28,36v8h-40v-8h28l-28,-36z" />
+</vector>
