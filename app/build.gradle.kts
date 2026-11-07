@@ -15,6 +15,14 @@ val localProps = Properties().apply {
 }
 fun localProp(name: String) = (localProps.getProperty(name) ?: "").trim()
 
+// Public build: ./gradlew assembleRelease -PpublicRelease
+// It leaves out the URLs from local.properties and signs with the key described in
+// ~/.zmiptv/signing.properties (keystore, storePassword, keyAlias, keyPassword), or in -PsigningFile=<path>.
+val publicRelease = project.hasProperty("publicRelease")
+val signingFile = file(
+    project.findProperty("signingFile")?.toString() ?: "${System.getProperty("user.home")}/.zmiptv/signing.properties",
+)
+
 android {
     namespace = "com.zmeuk.zmiptv"
     compileSdk = 34
@@ -25,17 +33,31 @@ android {
         targetSdk = 34
         versionCode = 7
         versionName = "0.7"
-        buildConfigField("String", "PLAYLIST_URL", "\"${localProp("iptv.playlistUrl")}\"")
+        val playlist = if (publicRelease) "" else localProp("iptv.playlistUrl")
+        buildConfigField("String", "PLAYLIST_URL", "\"$playlist\"")
         // Empty by default: the guide URL is then taken from the playlist header
-        val epg = localProp("iptv.epgUrl")
+        val epg = if (publicRelease) "" else localProp("iptv.epgUrl")
         buildConfigField("String", "EPG_URL", "\"$epg\"")
+    }
+
+    signingConfigs {
+        if (publicRelease) {
+            create("public") {
+                require(signingFile.exists()) { "No signing file: $signingFile" }
+                val p = Properties().apply { signingFile.inputStream().use { load(it) } }
+                storeFile = file(p.getProperty("keystore"))
+                storePassword = p.getProperty("storePassword")
+                keyAlias = p.getProperty("keyAlias")
+                keyPassword = p.getProperty("keyPassword")
+            }
+        }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            // Side-loaded only: sign release with the debug key so it installs as-is.
-            signingConfig = signingConfigs.getByName("debug")
+            // Own builds are side-loaded and use the debug key, so they install as-is.
+            signingConfig = signingConfigs.getByName(if (publicRelease) "public" else "debug")
         }
     }
 

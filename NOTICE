@@ -1,0 +1,9 @@
+ZmIPTV includes the following third-party software. Each component is
+licensed under the Apache License, Version 2.0:
+https://www.apache.org/licenses/LICENSE-2.0
+
+- AndroidX and Jetpack Compose, The Android Open Source Project
+- AndroidX Media3 (ExoPlayer), The Android Open Source Project
+- Kotlin and kotlinx.coroutines, JetBrains s.r.o. and contributors
+- Coil, Coil Contributors
+- ZXing, ZXing authors

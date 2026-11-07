@@ -215,4 +215,4 @@ ZmIPTV does not collect personal data and does not send it to third parties. It 
 - **Code:** [PolyForm Noncommercial License 1.0.0](LICENSE). You may take the code, change it and use it for any noncommercial purpose, including sharing it with others. Keep the `Required Notice` line from the license when you share it. Commercial use is not allowed.
 - **UI and UX design:** all rights reserved. This covers the look of the screens, the logo, icons, banner, splash screen and the ZmIPTV name. You may build and run the app with them for your own noncommercial use. Reusing them in another project, or publishing an app that uses them to an app store, requires written permission. See [LICENSE](LICENSE) for details.
 
-Third-party libraries and the Gradle wrapper keep their own licenses.
+Third-party libraries and the Gradle wrapper keep their own licenses, see [NOTICE](NOTICE).
